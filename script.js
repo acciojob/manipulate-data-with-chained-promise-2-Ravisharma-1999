@@ -1,4 +1,3 @@
-//your JS code here. If required.
 // Function that returns a promise resolving with an array of numbers after 3 seconds
 function getNumbers() {
     return new Promise((resolve) => {
@@ -31,15 +30,15 @@ function multiplyByTwo(numbers) {
 // Perform the operations with promise chaining
 getNumbers()
     .then((numbers) => {
-        // First step: Filter out odd numbers
+        // Step 1: Filter out odd numbers
         return filterOdds(numbers).then((evenNumbers) => {
-            document.getElementById("output").innerText = `Even Numbers: ${evenNumbers.join(", ")}`;
+            document.getElementById("output").innerText = evenNumbers.join(","); // Update output div
             return evenNumbers; // Pass to the next chain
         });
     })
     .then((evenNumbers) => {
-        // Second step: Multiply even numbers by 2
+        // Step 2: Multiply even numbers by 2
         return multiplyByTwo(evenNumbers).then((multipliedNumbers) => {
-            document.getElementById("output").innerText = `Multiplied Numbers: ${multipliedNumbers.join(", ")}`;
+            document.getElementById("output").innerText = multipliedNumbers.join(","); // Update output div
         });
     });
